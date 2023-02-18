@@ -5,16 +5,12 @@ import (
 	"fmt"
 	"menus"
 	"roles"
+	"strconv"
 )
 
 func main() {
 
-	pila := estructuras.Stack{}
-	pila.Push(1)
-	pila.Push(2)
-	pila.Push(3)
-	pila.Recorrer()
-	fmt.Println(pila.Top())
+	ColaAlumnos := estructuras.Queu{}
 
 	var option int
 	// iniciamos el administrador
@@ -44,11 +40,56 @@ func main() {
 					fmt.Scanln(&op2)
 					switch op2 {
 					case 1:
-						fmt.Println("ESTUDIANTES PENDIENTES")
+						if ColaAlumnos.IsEmpty() {
+							menus.Vacia()
+						} else {
+							var desicion int
+
+							fmt.Println("\n********** Estudiantes Pendientes **********\n")
+						enlistar:
+							for desicion != 3 && !ColaAlumnos.IsEmpty() {
+								fmt.Println("**********       Pendientes:" + strconv.Itoa(ColaAlumnos.Size()) + "     **********")
+								fmt.Println("*    Estudiante Actual: " + ColaAlumnos.Cabeza() + "         *")
+								menus.Desicion()
+								fmt.Print("\nElige una Opcion: ")
+								fmt.Scanln(&desicion)
+								switch desicion {
+								case 1:
+									fmt.Println("Estudiante Aceptado en el Sistema!!!!")
+									ColaAlumnos.Dequeu() //desencolo al final
+								case 2:
+									ColaAlumnos.Dequeu() //desencolar sin hacer nada mas ya que se les rechazo
+									fmt.Print("\nAlumno Rechazado !!! \n")
+								case 3:
+									fmt.Println("\nSaliendo !!!!")
+									break enlistar
+								default:
+									fmt.Println("elija entre el 1-3")
+
+								}
+							}
+
+						}
 					case 2:
 						fmt.Println("ESTUDIANTES DEL SISTEMA")
 					case 3:
-						fmt.Println("Rgistrar Nuevo Estudiante")
+						fmt.Println("***** Registro de Estudiantes - EDD GoDrive *****")
+						var nombre, apellido, password string
+						var carnet int
+						fmt.Print("Ingresa Nombre: ")
+						fmt.Scanln(&nombre)
+						fmt.Print("Ingresa Apellido: ")
+						fmt.Scanln(&apellido)
+						fmt.Print("Ingresa tu carnet: ")
+						fmt.Scanln(&carnet)
+						fmt.Print("Ingresa tu contraseña: ")
+						fmt.Scanln(&password)
+
+						user := roles.Student{nombre, apellido, carnet, password}
+						ColaAlumnos.Enqueu(user)
+
+						fmt.Println("\nEstudiante " + user.Nombre + " " + user.Apellido + " en cola de espera")
+
 					case 4:
 						fmt.Println("Carga masiva de estudiantes")
 					case 5:

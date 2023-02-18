@@ -1,6 +1,9 @@
 package estructuras
 
-import "fmt"
+import (
+	"fmt"
+	"roles"
+)
 
 type Node struct {
 	data interface{}
@@ -55,4 +58,11 @@ func (q *Queu) Size() int {
 
 func (q *Queu) IsEmpty() bool {
 	return q.size == 0
+}
+
+func (q *Queu) Cabeza() string {
+	if student, ok := q.head.data.(roles.Student); ok {
+		return student.Nombre + " " + student.Apellido
+	}
+	return "" // o algún valor por defecto si el tipo de dato no es Student o si es nulo
 }
