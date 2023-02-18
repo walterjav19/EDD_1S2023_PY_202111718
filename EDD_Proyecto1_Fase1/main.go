@@ -10,8 +10,8 @@ import (
 
 func main() {
 
-	ColaAlumnos := estructuras.Queu{}
-
+	ColaAlumnos := &estructuras.Queu{}
+	ListAlumnos := &estructuras.LinkedList{}
 	var option int
 	// iniciamos el administrador
 	admin := roles.Admin{"admin", "admin"}
@@ -49,14 +49,16 @@ func main() {
 						enlistar:
 							for desicion != 3 && !ColaAlumnos.IsEmpty() {
 								fmt.Println("**********       Pendientes:" + strconv.Itoa(ColaAlumnos.Size()) + "     **********")
-								fmt.Println("*    Estudiante Actual: " + ColaAlumnos.Cabeza() + "         *")
+								fmt.Println("*    Estudiante Actual: " + ColaAlumnos.Cabeza().Nombre + " " + ColaAlumnos.Cabeza().Apellido + "         *")
 								menus.Desicion()
 								fmt.Print("\nElige una Opcion: ")
 								fmt.Scanln(&desicion)
 								switch desicion {
 								case 1:
 									fmt.Println("Estudiante Aceptado en el Sistema!!!!")
-									ColaAlumnos.Dequeu() //desencolo al final
+									a := ColaAlumnos.Dequeu()
+									ListAlumnos.Append(a) //agrego el desencolado a la lista
+									ListAlumnos.Sort()    //ordenamos cada que agregamos uno nuevo
 								case 2:
 									ColaAlumnos.Dequeu() //desencolar sin hacer nada mas ya que se les rechazo
 									fmt.Print("\nAlumno Rechazado !!! \n")
@@ -71,7 +73,8 @@ func main() {
 
 						}
 					case 2:
-						fmt.Println("ESTUDIANTES DEL SISTEMA")
+						fmt.Println("**********Listado de Estudiantes**********")
+						ListAlumnos.Recorrer()
 					case 3:
 						fmt.Println("***** Registro de Estudiantes - EDD GoDrive *****")
 						var nombre, apellido, password string
@@ -85,7 +88,7 @@ func main() {
 						fmt.Print("Ingresa tu contraseña: ")
 						fmt.Scanln(&password)
 
-						user := roles.Student{nombre, apellido, carnet, password}
+						user := &roles.Student{nombre, apellido, carnet, password}
 						ColaAlumnos.Enqueu(user)
 
 						fmt.Println("\nEstudiante " + user.Nombre + " " + user.Apellido + " en cola de espera")

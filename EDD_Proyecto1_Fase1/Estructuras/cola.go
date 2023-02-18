@@ -28,15 +28,18 @@ func (q *Queu) Enqueu(data interface{}) {
 	q.size++ //en cualquier cosa se encolo +1
 }
 
-func (q *Queu) Dequeu() interface{} { //nos retornara la info del nodo
-	if q.head == nil { //esta vacia
+func (q *Queu) Dequeu() *roles.Student {
+	if q.head == nil {
 		return nil
 	}
-	data := q.head.data  //el nodo que se borra
-	q.head = q.head.next //cabeza sera el siguiente en ser atendido
-	q.size--             //si llego aca se disminuye
+	data, ok := q.head.data.(*roles.Student)
+	if !ok {
+		return nil
+	}
+	q.head = q.head.next
+	q.size--
 
-	if q.head == nil { //si borramos al ultimo entonces el final tambien debe ser nil
+	if q.head == nil {
 		q.tail = nil
 	}
 
@@ -60,9 +63,9 @@ func (q *Queu) IsEmpty() bool {
 	return q.size == 0
 }
 
-func (q *Queu) Cabeza() string {
-	if student, ok := q.head.data.(roles.Student); ok {
-		return student.Nombre + " " + student.Apellido
+func (q *Queu) Cabeza() *roles.Student {
+	if s, ok := q.head.data.(*roles.Student); ok {
+		return s
 	}
-	return "" // o algún valor por defecto si el tipo de dato no es Student o si es nulo
+	return nil
 }
