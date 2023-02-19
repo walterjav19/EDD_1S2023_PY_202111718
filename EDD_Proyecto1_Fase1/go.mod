@@ -6,6 +6,7 @@ replace menus => ./menus
 
 require (
 	estructuras v0.0.0-00010101000000-000000000000
+	lectura v0.0.0-00010101000000-000000000000
 	menus v0.0.0-00010101000000-000000000000
 	roles v0.0.0-00010101000000-000000000000
 )
@@ -13,3 +14,5 @@ require (
 replace roles => ./roles
 
 replace estructuras => ./estructuras
+
+replace lectura => ./lectura

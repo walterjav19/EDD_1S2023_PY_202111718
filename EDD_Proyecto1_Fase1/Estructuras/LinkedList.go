@@ -48,38 +48,47 @@ func (l *LinkedList) Recorrer() {
 	}
 }
 
-func (l *LinkedList) Sort() {
-	if l.size < 2 { //no hace falta ordenar
-		return
-	}
-
-	var min *node
-	var aux *node
-
-	for i := l.head; i.next != nil; i = i.next {
-		min = i
-		for j := i.next; j != nil; j = j.next {
-			if min.data.Carnet > j.data.Carnet {
-				min = j
-			}
+func (l *LinkedList) Validar(carne int,password string) bool{
+	aux := l.head
+	for aux != nil {
+		if aux.data.Carnet==carne && password==aux.data.Password{
+			return true
 		}
-
-		if min != i {
-			// Intercambiar valores
-			aux = &node{min.data, i.next, i.prev}
-			min.data, i.data = i.data, min.data
-
-			if i.prev != nil {
-				i.prev.next = &node{i.data, aux.next, aux.prev}
-			} else {
-				l.head = &node{i.data, aux.next, aux.prev}
-			}
-
-			if min.next != nil {
-				min.next.prev = &node{min.data, aux.next, aux.prev}
-			} else {
-				l.tail = &node{min.data, aux.next, aux.prev}
-			}
-		}
+		aux = aux.next
 	}
+	return false
 }
+
+func (l *LinkedList) ObtenerCarnet(carne int) bool{
+	aux := l.head
+	for aux != nil {
+		if aux.data.Carnet==carne{
+			return true
+		}
+		aux = aux.next
+	}
+	return false
+}
+
+func (l *LinkedList) ObtenerPassword(pass string) bool{
+	aux := l.head
+	for aux != nil {
+		if aux.data.Password==pass{
+			return true
+		}
+		aux = aux.next
+	}
+	return false
+}
+
+func (l *LinkedList) GetStudent(carne int,password string) *roles.Student {
+    aux := l.head
+    for aux != nil {
+        if aux.data.Carnet == carne && password==aux.data.Password {
+            return aux.data
+        }
+        aux = aux.next
+    }
+    return nil
+}
+

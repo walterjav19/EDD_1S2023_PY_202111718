@@ -3,9 +3,11 @@ package main
 import (
 	"estructuras"
 	"fmt"
+	"lectura"
 	"menus"
 	"roles"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -58,7 +60,7 @@ func main() {
 									fmt.Println("Estudiante Aceptado en el Sistema!!!!")
 									a := ColaAlumnos.Dequeu()
 									ListAlumnos.Append(a) //agrego el desencolado a la lista
-									ListAlumnos.Sort()    //ordenamos cada que agregamos uno nuevo
+									
 								case 2:
 									ColaAlumnos.Dequeu() //desencolar sin hacer nada mas ya que se les rechazo
 									fmt.Print("\nAlumno Rechazado !!! \n")
@@ -73,8 +75,10 @@ func main() {
 
 						}
 					case 2:
+						//ListAlumnos.Sort()    //sort me esta petando aaa ojo
 						fmt.Println("**********Listado de Estudiantes**********")
 						ListAlumnos.Recorrer()
+						
 					case 3:
 						fmt.Println("***** Registro de Estudiantes - EDD GoDrive *****")
 						var nombre, apellido, password string
@@ -90,18 +94,69 @@ func main() {
 
 						user := &roles.Student{nombre, apellido, carnet, password}
 						ColaAlumnos.Enqueu(user)
+						ColaAlumnos.GenerarDotCola()
+					
 
 						fmt.Println("\nEstudiante " + user.Nombre + " " + user.Apellido + " en cola de espera")
 
 					case 4:
-						fmt.Println("Carga masiva de estudiantes")
+						var path string
+						fmt.Print("Ingrese Ruta de Su Archivo CSV: ")
+						fmt.Scanln(&path)
+						MatrizDatos := lectura.Leer(path)
+						for _, row := range MatrizDatos {
+							NombreCompleto := strings.Split(row[1], " ")
+							num, err := strconv.Atoi(row[0])
+							if err != nil {
+								fmt.Println("Trono")
+							} else {
+								Estudiante := &roles.Student{NombreCompleto[0], NombreCompleto[1], num, row[2]}
+								ColaAlumnos.Enqueu(Estudiante)
+								
+							}
+
+						}
+						fmt.Println("\nAlumnos agregados a la Cola de Espera !!!")
+
+						
 					case 5:
 						break dashboard
 					}
 				}
 
 			} else {
-				fmt.Println("recorrer lista")
+				usuario,err:=strconv.Atoi(usuario)
+				if err != nil {
+					fmt.Println("Asegurese de Ingresar como usuario su carnet")
+					
+				} else {
+					if !ListAlumnos.Empty(){
+						if ListAlumnos.Validar(usuario,contrasenia){
+							menus.Bienvenido()
+							p:=ListAlumnos.GetStudent(usuario,contrasenia)
+							menus.MenuUsuario(p.Nombre,p.Apellido,strconv.Itoa(p.Carnet))
+						}else{
+							if ListAlumnos.ObtenerCarnet(usuario)==false{
+								fmt.Println("Usuario Inexistente")
+							}else{
+								if ListAlumnos.ObtenerPassword(contrasenia)==false{
+									fmt.Println("Contraseña No coincide con El Usuario")
+								}
+							} 
+							
+
+					}
+
+					
+					
+
+						
+					}else{
+						fmt.Println("Aun No hay Estudiantes en la Plataforma")
+					}	
+				}
+
+
 			}
 		case 2:
 			menus.Adios()

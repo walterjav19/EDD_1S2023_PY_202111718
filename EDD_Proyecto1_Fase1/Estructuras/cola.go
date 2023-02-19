@@ -3,6 +3,8 @@ package estructuras
 import (
 	"fmt"
 	"roles"
+	"os"
+	"os/exec"
 )
 
 type Node struct {
@@ -68,4 +70,54 @@ func (q *Queu) Cabeza() *roles.Student {
 		return s
 	}
 	return nil
+}
+
+func (q *Queu) GenerarDotCola() {
+	file, err := os.Create("C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/cola.dot")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	_, err = file.WriteString("digraph G {\n"+"rankdir=LR;\n"+"node [shape=record];\n")
+	if err != nil {
+		panic(err)
+	}
+
+	aux := q.head
+	for aux != nil {
+		if s, ok := aux.data.(*roles.Student); ok {
+			_, err = file.WriteString(fmt.Sprintf("a%d [label=<<TABLE border=\"0\"><TR><TD ALIGN=\"CENTER\">%d</TD></TR><TR><TD ALIGN=\"CENTER\">%s %s</TD></TR></TABLE>>];\n", s.Carnet, s.Carnet, s.Nombre, s.Apellido))
+			if err != nil {
+				panic(err)
+			}
+
+			if aux.next != nil {
+				if nextS, ok := aux.next.data.(*roles.Student); ok {
+					_, err = file.WriteString(fmt.Sprintf("a%d -> a%d;\n", s.Carnet, nextS.Carnet))
+					if err != nil {
+						panic(err)
+					}
+				}
+			}
+		}
+		aux = aux.next
+	}
+
+	_, err = file.WriteString("}\n")
+	if err != nil {
+		panic(err)
+	}
+
+	RutaOrigen:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/cola.dot"
+	RutaDestino:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Reportes/cola.png"
+	//ejecutamos el comando para generar mi imagen ruta del dot 	
+	cmd := exec.Command("dot", "-Tpng", RutaOrigen, "-o",RutaDestino )
+	ex := cmd.Run()
+	if ex != nil {
+		fmt.Println(ex)
+		os.Exit(1)
+	}
+
+
 }

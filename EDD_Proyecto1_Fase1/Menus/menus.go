@@ -62,6 +62,15 @@ func MenuAdmin() {
 		"*********************************************")
 }
 
+
+func MenuUsuario(nombre,apellido,carnet string) {
+	fmt.Println("\n***    Dashboard Usuario - EDD GoDrive    ***\n" +
+				  "*       Usuario: "+nombre+" "+apellido+"    \n" +
+		          "*       Carnet: "+carnet+"                  \n"+
+				  "*********************************************")
+}
+
+
 func MenuInicio() {
 	fmt.Println("\n**************** EDD GoDrive ****************\n" +
 		"*             1. Iniciar Sesion             *\n" +
