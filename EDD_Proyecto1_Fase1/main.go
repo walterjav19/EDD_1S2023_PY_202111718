@@ -14,6 +14,7 @@ func main() {
 
 	ColaAlumnos := &estructuras.Queu{}
 	ListAlumnos := &estructuras.LinkedList{}
+	PilaAdministrador:=estructuras.Stack{}
 	var option int
 	// iniciamos el administrador
 	admin := roles.Admin{"admin", "admin"}
@@ -59,10 +60,17 @@ func main() {
 								case 1:
 									fmt.Println("Estudiante Aceptado en el Sistema!!!!")
 									a := ColaAlumnos.Dequeu()
+									ColaAlumnos.GenerarDotCola()
 									ListAlumnos.Append(a) //agrego el desencolado a la lista
-									
+									PilaAdministrador.Push("Se Acepto\n El Estudiante")
+									PilaAdministrador.CrearDot()
+
+
 								case 2:
-									ColaAlumnos.Dequeu() //desencolar sin hacer nada mas ya que se les rechazo
+									ColaAlumnos.Dequeu()//desencolar sin hacer nada mas ya que se les rechazo
+									ColaAlumnos.GenerarDotCola()
+									PilaAdministrador.Push("Se Rechazo\nEl Estudiante")
+									PilaAdministrador.CrearDot() 
 									fmt.Print("\nAlumno Rechazado !!! \n")
 								case 3:
 									fmt.Println("\nSaliendo !!!!")
@@ -112,11 +120,14 @@ func main() {
 							} else {
 								Estudiante := &roles.Student{NombreCompleto[0], NombreCompleto[1], num, row[2]}
 								ColaAlumnos.Enqueu(Estudiante)
+								ColaAlumnos.GenerarDotCola()
 								
 							}
-
+						
 						}
+
 						fmt.Println("\nAlumnos agregados a la Cola de Espera !!!")
+						
 
 						
 					case 5:

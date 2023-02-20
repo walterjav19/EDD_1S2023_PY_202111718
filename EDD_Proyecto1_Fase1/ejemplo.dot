@@ -1,21 +1,17 @@
-digraph cola {
+digraph Pila {
+    node [shape=box, width=1.2, height=0.6, style=filled, fillcolor=lightgray];
     rankdir=LR;
-    node [shape=record];
+    nodesep=0;
 
-    // Nodo inicial
-    head [shape=none, label="inicio", style=bold, height=0, width=0];
+    // Nodos de la pila
+    Tope  [label="tope"]
+    nodo1 [label="Nodo 1"];
+    nodo2 [label="Nodo 2"];
+    nodo3 [label="Nodo 3"];
 
-    // Nodo final
-    tail [shape=none, label="fin", style=bold, height=0, width=0];
+    // Agregar la relación rank=same entre el nodo Tope y el primer nodo de la pila
+    {rank=same; Tope; nodo1;}
 
-    // Nodos de los estudiantes
-    a [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">213213</TD></TR><TR><TD ALIGN="CENTER">Juan Perez</TD></TR></TABLE>>];
-    b [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">123456</TD></TR><TR><TD ALIGN="CENTER">Maria Rodriguez</TD></TR></TABLE>>];
-    c [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">987654</TD></TR><TR><TD ALIGN="CENTER">Pedro Gomez</TD></TR></TABLE>>];
+    // Agregar las relaciones de enlace entre los nodos de la pila
 
-    // Enlaces
-    head -> a;
-    a -> b;
-    b -> c;
-    c -> tail;
 }

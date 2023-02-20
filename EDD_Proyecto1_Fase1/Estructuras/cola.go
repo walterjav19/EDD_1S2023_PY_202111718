@@ -2,9 +2,9 @@ package estructuras
 
 import (
 	"fmt"
-	"roles"
 	"os"
 	"os/exec"
+	"roles"
 )
 
 type Node struct {
@@ -72,14 +72,22 @@ func (q *Queu) Cabeza() *roles.Student {
 	return nil
 }
 
+func (q *Queu) Tail() *roles.Student {
+	if s, ok := q.tail.data.(*roles.Student); ok {
+		return s
+	}
+	return nil
+}
+
 func (q *Queu) GenerarDotCola() {
 	file, err := os.Create("C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/cola.dot")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-
-	_, err = file.WriteString("digraph G {\n"+"rankdir=LR;\n"+"node [shape=record];\n")
+	Inicio := `head [shape=none, label="inicio", style=bold, height=0, width=0];
+tail [shape=none, label="fin", style=bold, height=0, width=0];`
+	_, err = file.WriteString("digraph G {\n"+"rankdir=LR;\n"+"node [shape=record];\n"+Inicio)
 	if err != nil {
 		panic(err)
 	}
@@ -104,10 +112,27 @@ func (q *Queu) GenerarDotCola() {
 		aux = aux.next
 	}
 
+	if q.head!=nil{
+		_, err = file.WriteString(fmt.Sprintf("head -> a%d;\n", q.Cabeza().Carnet))
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	if q.tail!=nil{
+		_, err = file.WriteString(fmt.Sprintf("a%d->tail;\n", q.Tail().Carnet))
+		if err != nil {
+			panic(err)
+		}
+	}
+
+
 	_, err = file.WriteString("}\n")
 	if err != nil {
 		panic(err)
 	}
+
+	
 
 	RutaOrigen:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/cola.dot"
 	RutaDestino:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Reportes/cola.png"
