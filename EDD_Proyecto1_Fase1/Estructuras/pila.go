@@ -1,14 +1,11 @@
 package estructuras
 
-
-
-
-
-
-import ("fmt"
-"os"
-"time"
-"os/exec")
+import (
+	"fmt"
+	"os"
+	"os/exec"
+	"time"
+)
 
 
 type NodeStack struct {
@@ -71,14 +68,24 @@ func (p *Stack) CrearDot() {
 		return
 	}
 
+	// Crear una copia de la pila
+	copyStack := &Stack{}
 	aux := p.top
+	for aux != nil {
+		copyStack.Push(aux.data)
+		aux = aux.next
+	}
+
+	// Recorrer la copia de la pila a la inversa y escribir los nodos en el archivo Dot
+	aux = copyStack.top
 	i := 0
 	for aux != nil {
-		//fecah en el formato que indica
-		now := time.Now().Format("2006-01-02 15:04")
+		//fecha en el formato que indica
+		now := time.Now().Format("2006-01-02 15:04:05")
 
 		// Escribir el nodo con la fecha y hora
 		label := fmt.Sprintf("%v\n%s", aux.data, now)
+
 		// Escribir el nodo
 		_, err = f.WriteString(fmt.Sprintf("n%d [label=\"%s\"];\n", i, label))
 		if err != nil {
@@ -105,5 +112,4 @@ func (p *Stack) CrearDot() {
 		fmt.Println(ex)
 		os.Exit(1)
 	}
-	
 }

@@ -64,6 +64,7 @@ func main() {
 									ListAlumnos.Append(a) //agrego el desencolado a la lista
 									PilaAdministrador.Push("Se Acepto\n El Estudiante")
 									PilaAdministrador.CrearDot()
+									ListAlumnos.GenerarDotLista()
 
 
 								case 2:

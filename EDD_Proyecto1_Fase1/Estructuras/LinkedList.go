@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"menus"
 	"roles"
+	"os"
+	"os/exec"
 )
 
 type node struct {
@@ -92,3 +94,84 @@ func (l *LinkedList) GetStudent(carne int,password string) *roles.Student {
     return nil
 }
 
+func (l *LinkedList) GenerarDotLista() {
+	file, err := os.Create("C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/Lista.dot")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	_, err = file.WriteString(`digraph LinkedList {
+	rankdir=LR;
+	node [shape=record];
+	nullI [shape=none, label="null", style=bold, height=0, width=0];
+	nullF [shape=none, label="null", style=bold, height=0, width=0];
+	`)
+	if err != nil {
+		panic(err)
+	}
+
+	aux:=l.head
+	for aux!=nil{
+		_,err=file.WriteString(fmt.Sprintf(`a%d[label="%d\n%s %s"]
+	`,aux.data.Carnet,aux.data.Carnet,aux.data.Nombre,aux.data.Apellido))
+		if err != nil {
+			panic(err)
+		}
+
+		if aux.next!=nil{
+			_,err=file.WriteString(fmt.Sprintf(`a%d->a%d
+	`,aux.data.Carnet,aux.next.data.Carnet))
+			if err != nil {
+				panic(err)
+			}
+		}
+		
+		if aux.prev!=nil{
+			_,err=file.WriteString(fmt.Sprintf(`a%d->a%d
+	`,aux.data.Carnet,aux.prev.data.Carnet))
+			if err != nil {
+				panic(err)
+			}
+		}
+
+		if aux.next==nil{
+			_,err=file.WriteString(fmt.Sprintf(`a%d->nullF
+			`,aux.data.Carnet))
+			if err != nil {
+				panic(err)
+			}
+		}
+
+		if aux.prev==nil{
+			_,err=file.WriteString(fmt.Sprintf(`nullI->a%d[dir=back]
+			`,aux.data.Carnet))
+			if err != nil {
+				panic(err)
+			}
+		}
+
+
+		aux=aux.next
+	}
+
+
+	
+
+	
+
+	_, err = file.WriteString("}\n")
+	if err != nil {
+		panic(err)
+	}
+
+	RutaOrigen:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/Lista.dot"
+	RutaDestino:="C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Reportes/Lista.png"
+	//ejecutamos el comando para generar mi imagen ruta del dot 	
+	cmd := exec.Command("dot", "-Tpng", RutaOrigen, "-o",RutaDestino )
+	ex := cmd.Run()
+	if ex != nil {
+		fmt.Println(ex)
+		os.Exit(1)
+	}
+
+}

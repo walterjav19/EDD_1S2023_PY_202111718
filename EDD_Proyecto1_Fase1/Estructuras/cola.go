@@ -87,7 +87,7 @@ func (q *Queu) GenerarDotCola() {
 	defer file.Close()
 	Inicio := `head [shape=none, label="inicio", style=bold, height=0, width=0];
 tail [shape=none, label="fin", style=bold, height=0, width=0];`
-	_, err = file.WriteString("digraph G {\n"+"rankdir=LR;\n"+"node [shape=record];\n"+Inicio)
+	_, err = file.WriteString("digraph Cola {\n"+"rankdir=LR;\n"+"node [shape=record];\n"+Inicio)
 	if err != nil {
 		panic(err)
 	}

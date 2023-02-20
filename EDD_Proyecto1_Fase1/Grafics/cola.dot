@@ -1,4 +1,4 @@
-digraph G {
+digraph Cola {
 rankdir=LR;
 node [shape=record];
 head [shape=none, label="inicio", style=bold, height=0, width=0];

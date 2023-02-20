@@ -4,20 +4,20 @@ rankdir=LR;
 nodesep=0;
 n0 [label="Se Acepto
  El Estudiante
-2023-02-19 23:35"];
+2023-02-20 10:47:07"];
 n1 [label="Se Acepto
  El Estudiante
-2023-02-19 23:35"];
+2023-02-20 10:47:07"];
 n2 [label="Se Rechazo
 El Estudiante
-2023-02-19 23:35"];
-n3 [label="Se Acepto
- El Estudiante
-2023-02-19 23:35"];
-n4 [label="Se Rechazo
+2023-02-20 10:47:07"];
+n3 [label="Se Rechazo
 El Estudiante
-2023-02-19 23:35"];
+2023-02-20 10:47:07"];
+n4 [label="Se Acepto
+ El Estudiante
+2023-02-20 10:47:07"];
 n5 [label="Se Acepto
  El Estudiante
-2023-02-19 23:35"];
+2023-02-20 10:47:07"];
 }

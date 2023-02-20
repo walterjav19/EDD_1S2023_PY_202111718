@@ -1,17 +1,16 @@
-digraph Pila {
-    node [shape=box, width=1.2, height=0.6, style=filled, fillcolor=lightgray];
-    rankdir=LR;
-    nodesep=0;
+digraph LinkedList {
+rankdir=LR;
+node [shape=record];
+nullI [shape=none, label="null", style=bold, height=0, width=0];
+nullF [shape=none, label="null", style=bold, height=0, width=0];
 
-    // Nodos de la pila
-    Tope  [label="tope"]
-    nodo1 [label="Nodo 1"];
-    nodo2 [label="Nodo 2"];
-    nodo3 [label="Nodo 3"];
+a[label="20211178\nWalter Santizo"]
+a->b
+b[label="21321321\nDamian Peña"]
+b->a
+b->c
+c[label="22132212\nSandra Perez"]
+c->nullF
 
-    // Agregar la relación rank=same entre el nodo Tope y el primer nodo de la pila
-    {rank=same; Tope; nodo1;}
-
-    // Agregar las relaciones de enlace entre los nodos de la pila
-
+nullI->a [dir=back]
 }
