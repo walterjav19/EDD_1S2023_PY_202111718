@@ -63,6 +63,8 @@ func main() {
 									a := ColaAlumnos.Dequeu()
 									ColaAlumnos.GenerarDotCola()
 									ListAlumnos.Append(a) //agrego el desencolado a la lista
+									//ordenamos
+									ListAlumnos.Sort()
 									//fecha en el formato que indica
 									now := time.Now().Format("2006-01-02 15:04:05")
 									PilaAdministrador.Push("Se Acepto\n El Estudiante\n"+now)

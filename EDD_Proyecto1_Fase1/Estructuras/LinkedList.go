@@ -94,6 +94,49 @@ func (l *LinkedList) GetStudent(carne int,password string) *roles.Student {
     return nil
 }
 
+
+func (l *LinkedList) Sort() {
+    if l.Empty() {
+        return
+    }
+
+    current := l.head
+    for current != nil {
+        // Insert current node into sorted sub-list
+        sorted := current
+        for sorted.prev != nil && sorted.prev.data.Carnet > current.data.Carnet {
+            sorted = sorted.prev
+        }
+
+        // Move current node to sorted position
+        if current != sorted {
+            // Remove current node from current position
+            current.prev.next = current.next
+            if current.next != nil {
+                current.next.prev = current.prev
+            } else {
+                l.tail = current.prev
+            }
+
+            // Insert current node into sorted position
+            current.prev = sorted.prev
+            current.next = sorted
+            if sorted.prev != nil {
+                sorted.prev.next = current
+            } else {
+                l.head = current
+            }
+            sorted.prev = current
+        }
+
+        // Move to next node
+        current = current.next
+    }
+}
+
+
+
+
 func (l *LinkedList) GenerarDotLista() {
 	file, err := os.Create("C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Grafics/Lista.dot")
 	if err != nil {

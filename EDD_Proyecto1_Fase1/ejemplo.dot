@@ -13,4 +13,14 @@ c[label="22132212\nSandra Perez"]
 c->nullF
 
 nullI->a [dir=back]
+
+
+n0 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:09:32"];
+n1 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:09:50"];
+n2 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:22"];
+n3 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:24"];
+n4 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:29"];
+n5 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:30"];
+
+
 }
