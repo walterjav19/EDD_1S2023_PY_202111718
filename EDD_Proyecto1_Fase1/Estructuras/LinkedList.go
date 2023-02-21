@@ -175,3 +175,57 @@ func (l *LinkedList) GenerarDotLista() {
 	}
 
 }
+
+func (l *LinkedList) Generarjson() {
+	file, err := os.Create("C:/Users/USUARIO/Desktop/1Semestre_2023/EDD/LAB/EDD_1S2023_PY_202111718/EDD_Proyecto1_Fase1/Reportes/Alumnos.json")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	_, err = file.WriteString(`{
+	"alumnos": [
+		`)
+	if err != nil {
+		panic(err)
+	}
+
+	aux:=l.head
+	for aux!=nil{
+		if aux.next!=nil{
+			_,err=file.WriteString(fmt.Sprintf(`{
+			"nombre": "%s %s",
+			"carnet": %d,
+			"password": "%s",
+			"Carpeta_Raiz": "/"
+		},
+	    `,aux.data.Nombre,aux.data.Apellido,aux.data.Carnet,aux.data.Password))
+		if err!=nil{
+			panic(err)
+		}
+
+		
+	}else{
+		_,err=file.WriteString(fmt.Sprintf(`{
+			"nombre": "%s %s",
+			"carnet": %d,
+			"password": "%s",
+			"Carpeta_Raiz": "/"
+		}
+	`,aux.data.Nombre,aux.data.Apellido,aux.data.Carnet,aux.data.Password))
+		if err!=nil{
+			panic(err)
+		}		
+	}
+	aux=aux.next
+	}
+
+	
+
+	
+
+	_, err = file.WriteString("]\n}")
+	if err != nil {
+		panic(err)
+	}
+
+}

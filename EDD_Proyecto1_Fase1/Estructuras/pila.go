@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"time"
 )
 
 
@@ -80,11 +79,10 @@ func (p *Stack) CrearDot() {
 	aux = copyStack.top
 	i := 0
 	for aux != nil {
-		//fecha en el formato que indica
-		now := time.Now().Format("2006-01-02 15:04:05")
+
 
 		// Escribir el nodo con la fecha y hora
-		label := fmt.Sprintf("%v\n%s", aux.data, now)
+		label := fmt.Sprintf("%v", aux.data)
 
 		// Escribir el nodo
 		_, err = f.WriteString(fmt.Sprintf("n%d [label=\"%s\"];\n", i, label))

@@ -8,6 +8,7 @@ import (
 	"roles"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -62,15 +63,21 @@ func main() {
 									a := ColaAlumnos.Dequeu()
 									ColaAlumnos.GenerarDotCola()
 									ListAlumnos.Append(a) //agrego el desencolado a la lista
-									PilaAdministrador.Push("Se Acepto\n El Estudiante")
+									//fecha en el formato que indica
+									now := time.Now().Format("2006-01-02 15:04:05")
+									PilaAdministrador.Push("Se Acepto\n El Estudiante\n"+now)
 									PilaAdministrador.CrearDot()
 									ListAlumnos.GenerarDotLista()
+									ListAlumnos.Generarjson()
+									
 
 
 								case 2:
 									ColaAlumnos.Dequeu()//desencolar sin hacer nada mas ya que se les rechazo
 									ColaAlumnos.GenerarDotCola()
-									PilaAdministrador.Push("Se Rechazo\nEl Estudiante")
+									now := time.Now().Format("2006-01-02 15:04:05")
+									PilaAdministrador.Push("Se Rechazo\nEl Estudiante\n"+now)
+									//fecha en el formato que indica
 									PilaAdministrador.CrearDot() 
 									fmt.Print("\nAlumno Rechazado !!! \n")
 								case 3:

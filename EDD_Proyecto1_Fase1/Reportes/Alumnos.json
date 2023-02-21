@@ -1,0 +1,40 @@
+{
+	"alumnos": [
+		{
+			"nombre": "Leonardo Martinez",
+			"carnet": 201780044,
+			"password": "leo1234",
+			"Carpeta_Raiz": "/"
+		},
+	    {
+			"nombre": "Cristian Suy",
+			"carnet": 201709018,
+			"password": "cris1234",
+			"Carpeta_Raiz": "/"
+		},
+	    {
+			"nombre": "Ebany Larios",
+			"carnet": 201403877,
+			"password": "qwerty12",
+			"Carpeta_Raiz": "/"
+		},
+	    {
+			"nombre": "Walter Santizo",
+			"carnet": 202111718,
+			"password": "cientificojoven",
+			"Carpeta_Raiz": "/"
+		},
+	    {
+			"nombre": "Giovani Santizo",
+			"carnet": 199901876,
+			"password": "pinochitos",
+			"Carpeta_Raiz": "/"
+		},
+	    {
+			"nombre": "Sandra Mazariegos",
+			"carnet": 200467898,
+			"password": "marimba",
+			"Carpeta_Raiz": "/"
+		}
+	]
+}
