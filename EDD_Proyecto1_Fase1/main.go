@@ -110,7 +110,7 @@ func main() {
 						fmt.Print("Ingresa tu contraseña: ")
 						fmt.Scanln(&password)
 
-						user := &roles.Student{nombre, apellido, carnet, password}
+						user := &roles.Student{nombre, apellido, carnet, password,&roles.Stack{}}
 						ColaAlumnos.Enqueu(user)
 						ColaAlumnos.GenerarDotCola()
 					
@@ -128,7 +128,7 @@ func main() {
 							if err != nil {
 								fmt.Println("Trono")
 							} else {
-								Estudiante := &roles.Student{NombreCompleto[0], NombreCompleto[1], num, row[2]}
+								Estudiante := &roles.Student{NombreCompleto[0], NombreCompleto[1], num, row[2],&roles.Stack{}}
 								ColaAlumnos.Enqueu(Estudiante)
 								ColaAlumnos.GenerarDotCola()
 								
@@ -156,6 +156,10 @@ func main() {
 							menus.Bienvenido()
 							p:=ListAlumnos.GetStudent(usuario,contrasenia)
 							menus.MenuUsuario(p.Nombre,p.Apellido,strconv.Itoa(p.Carnet))
+							now := time.Now().Format("2006-01-02 15:04:05")
+							p.Push("Se inició sesión\n"+now)
+							p.Recorrer()
+							ListAlumnos.GenerarDotLista()
 						}else{
 							if ListAlumnos.ObtenerCarnet(usuario)==false{
 								fmt.Println("Usuario Inexistente")

@@ -2,4 +2,9 @@ digraph Cola {
 rankdir=LR;
 node [shape=record];
 head [shape=none, label="inicio", style=bold, height=0, width=0];
-tail [shape=none, label="fin", style=bold, height=0, width=0];}
+tail [shape=none, label="fin", style=bold, height=0, width=0];a20234567 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">20234567</TD></TR><TR><TD ALIGN="CENTER">damian ignacio</TD></TR></TABLE>>];
+a20234567 -> a199976543;
+a199976543 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">199976543</TD></TR><TR><TD ALIGN="CENTER">mario orantes</TD></TR></TABLE>>];
+head -> a20234567;
+a199976543->tail;
+}

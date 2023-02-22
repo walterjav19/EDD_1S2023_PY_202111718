@@ -1,33 +1,51 @@
 digraph LinkedList {
 	rankdir=LR;
-	node [shape=record];
+	node [shape=box];
 	nullI [shape=none, label="null", style=bold, height=0, width=0];
 	nullF [shape=none, label="null", style=bold, height=0, width=0];
-	a1[label="1\nest2 est2"]
-	a1->a2
-	nullI->a1[dir=back]
-			a2[label="2\nest2 est3"]
-	a2->a4
-	a2->a1
-	a4[label="4\nestudiante apellido1"]
-	a4->a199901876
-	a4->a2
 	a199901876[label="199901876\nGiovani Santizo"]
 	a199901876->a200467898
-	a199901876->a4
-	a200467898[label="200467898\nSandra Mazariegos"]
+	nullI->a199901876[dir=back]
+			a200467898[label="200467898\nSandra Mazariegos"]
 	a200467898->a201403877
 	a200467898->a199901876
-	a201403877[label="201403877\nEbany Larios"]
+	a200467898->n20
+	n20[label="Se inició sesión
+2023-02-21 22:54:50"]
+		{rank=same;a200467898,n20}
+a201403877[label="201403877\nEbany Larios"]
 	a201403877->a201709018
 	a201403877->a200467898
-	a201709018[label="201709018\nCristian Suy"]
+	a201403877->n40
+	n40[label="Se inició sesión
+2023-02-21 22:57:01"]
+		n40->n41
+			n41[label="Se inició sesión
+2023-02-21 22:56:53"]
+		n41->n42
+			n42[label="Se inició sesión
+2023-02-21 22:55:56"]
+		n42->n43
+			n43[label="Se inició sesión
+2023-02-21 22:55:49"]
+		{rank=same;a201403877,n40,n41,n42,n43}
+a201709018[label="201709018\nCristian Suy"]
 	a201709018->a201780044
 	a201709018->a201403877
 	a201780044[label="201780044\nLeonardo Martinez"]
 	a201780044->a202111718
 	a201780044->a201709018
-	a202111718[label="202111718\nWalter Santizo"]
+	a201780044->n80
+	n80[label="Se inició sesión
+2023-02-21 22:52:43"]
+		n80->n81
+			n81[label="Se inició sesión
+2023-02-21 22:52:24"]
+		n81->n82
+			n82[label="Se inició sesión
+2023-02-21 22:51:58"]
+		{rank=same;a201780044,n80,n81,n82}
+a202111718[label="202111718\nWalter Santizo"]
 	a202111718->a201780044
 	a202111718->nullF
 			}

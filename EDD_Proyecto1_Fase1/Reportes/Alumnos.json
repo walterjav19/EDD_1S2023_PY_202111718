@@ -1,24 +1,6 @@
 {
 	"alumnos": [
 		{
-			"nombre": "est2 est2",
-			"carnet": 1,
-			"password": "a",
-			"Carpeta_Raiz": "/"
-		},
-	    {
-			"nombre": "est2 est3",
-			"carnet": 2,
-			"password": "sasasa",
-			"Carpeta_Raiz": "/"
-		},
-	    {
-			"nombre": "estudiante apellido1",
-			"carnet": 4,
-			"password": "sasa",
-			"Carpeta_Raiz": "/"
-		},
-	    {
 			"nombre": "Giovani Santizo",
 			"carnet": 199901876,
 			"password": "pinochitos",

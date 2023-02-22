@@ -1,26 +1,38 @@
 digraph LinkedList {
-rankdir=LR;
-node [shape=record];
-nullI [shape=none, label="null", style=bold, height=0, width=0];
-nullF [shape=none, label="null", style=bold, height=0, width=0];
+	rankdir=LR;
+	node [shape=box];
+	nullI [shape=none, label="null", style=bold, height=0, width=0];
+	nullF [shape=none, label="null", style=bold, height=0, width=0];
+	a199901876[label="199901876\nGiovani Santizo"]
+	a199901876->a200467898
+	nullI->a199901876[dir=back]
+	a200467898[label="200467898\nSandra Mazariegos"]
+	a200467898->a201403877
+	a200467898->a199901876
+	a201403877[label="201403877\nEbany Larios"]
+	a201403877->a201709018
+	a201403877->a200467898
+	a201709018[label="201709018\nCristian Suy"]
+	a201709018->a201780044
+	a201709018->a201403877
+	a201780044[label="201780044\nLeonardo Martinez"]
+	a201780044->a202111718
+	a201780044->a201709018
+	a202111718[label="202111718\nWalter Santizo"]
+	a202111718->a201780044
+	a202111718->nullF
 
-a[label="20211178\nWalter Santizo"]
-a->b
-b[label="21321321\nDamian Peña"]
-b->a
-b->c
-c[label="22132212\nSandra Perez"]
-c->nullF
-
-nullI->a [dir=back]
+	
+	n0[label="hola"]
+	n0->n1
+	n1[label="hola2"]
+	a199901876->n0
+	{rank=same;a199901876};
 
 
-n0 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:09:32"];
-n1 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:09:50"];
-n2 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:22"];
-n3 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:24"];
-n4 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:29"];
-n5 [label="Se Acepto\nEl Estudiante\n2023-02-20 18:10:30"];
-
-
+	a202111718->n2
+	n2[label="hola"]
+	n2->n3
+	n3[label="hola2"]
+	{ rank=same;a202111718,n2,n3}
 }

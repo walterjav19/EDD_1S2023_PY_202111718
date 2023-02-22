@@ -3,9 +3,9 @@ package estructuras
 import (
 	"fmt"
 	"menus"
-	"roles"
 	"os"
 	"os/exec"
+	"roles"
 )
 
 type node struct {
@@ -145,7 +145,7 @@ func (l *LinkedList) GenerarDotLista() {
 	defer file.Close()
 	_, err = file.WriteString(`digraph LinkedList {
 	rankdir=LR;
-	node [shape=record];
+	node [shape=box];
 	nullI [shape=none, label="null", style=bold, height=0, width=0];
 	nullF [shape=none, label="null", style=bold, height=0, width=0];
 	`)
@@ -154,6 +154,7 @@ func (l *LinkedList) GenerarDotLista() {
 	}
 
 	aux:=l.head
+	i:=0
 	for aux!=nil{
 		_,err=file.WriteString(fmt.Sprintf(`a%d[label="%d\n%s %s"]
 	`,aux.data.Carnet,aux.data.Carnet,aux.data.Nombre,aux.data.Apellido))
@@ -193,14 +194,17 @@ func (l *LinkedList) GenerarDotLista() {
 			}
 		}
 
+		if aux.data.Pila!=nil{
+			_,err=file.WriteString(aux.data.DotPilaEstudiante(i))
+			i+=20
+			if err != nil {
+				panic(err)
+			}
+		}
 
 		aux=aux.next
 	}
 
-
-	
-
-	
 
 	_, err = file.WriteString("}\n")
 	if err != nil {
@@ -261,10 +265,6 @@ func (l *LinkedList) Generarjson() {
 	}
 	aux=aux.next
 	}
-
-	
-
-	
 
 	_, err = file.WriteString("]\n}")
 	if err != nil {
