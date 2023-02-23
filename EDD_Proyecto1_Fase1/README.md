@@ -37,16 +37,23 @@ aplicada a estructuras de datos
 * Programacion Orientada a Objetos 
 * Sintaxis Go
 * JSON (Java Script Object Notation)
+##
 * Listas
+
 ![Lista](Reportes/Lista.png)
+## 
 * Colas
+
 ![Cola](Reportes/cola.png)
+
+##
 * Pilas
+
 ![Pila](Reportes/PilaAdmin.png)
 
 ## Diagrama de Clases
 
-![UML](diagrama.png)
+![UML](diagrama.jpg)
 
 
 
