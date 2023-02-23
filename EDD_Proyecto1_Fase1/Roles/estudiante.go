@@ -31,36 +31,6 @@ func (s *Student) ToString() string {
 		"***********************************************"
 }
 
-func (p *Stack) Push(value interface{}) {
-	newNode := &stackNode{value, p.top}
-	p.top = newNode
-	p.size++
-}
-
-func (p *Stack) Pop() interface{} {
-	if p.top == nil {
-		return nil
-	}
-
-	value := p.top.value
-	p.top = p.top.prev
-	p.size--
-	return value
-}
-
-func (p *Stack) Recorrer() {
-	if p.top == nil {
-		return
-	}
-
-	aux := p.top
-	for aux != nil {
-		// mostrar el valor del nodo
-		fmt.Println(aux.value)
-		aux = aux.prev
-	}
-}
-
 func (s *Student) Push(value interface{}) {
 	newNode := &stackNode{value, s.Pila.top}
 	s.Pila.top = newNode
