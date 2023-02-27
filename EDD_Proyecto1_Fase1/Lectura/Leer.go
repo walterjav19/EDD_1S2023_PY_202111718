@@ -23,7 +23,12 @@ func Leer(path string) [][]string {
 	if err != nil {
 		fmt.Println("Error al leer el archivo CSV:", err)
 	}
-
+	
+	if len(rows) > 1 {
+		rows = rows[1:]
+	} else {
+		rows = nil
+	}
 	// Imprimir las filas
 	return rows
 }

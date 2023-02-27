@@ -2,9 +2,15 @@ digraph Cola {
 rankdir=LR;
 node [shape=record];
 head [shape=none, label="inicio", style=bold, height=0, width=0];
-tail [shape=none, label="fin", style=bold, height=0, width=0];a202187654 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">202187654</TD></TR><TR><TD ALIGN="CENTER">Damian Peña</TD></TR></TABLE>>];
-a202187654 -> a197696543;
-a197696543 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">197696543</TD></TR><TR><TD ALIGN="CENTER">Juan Guarnizo</TD></TR></TABLE>>];
-head -> a202187654;
-a197696543->tail;
+tail [shape=none, label="fin", style=bold, height=0, width=0];a201709018 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">201709018</TD></TR><TR><TD ALIGN="CENTER">Cristian Suy</TD></TR></TABLE>>];
+a201709018 -> a201403877;
+a201403877 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">201403877</TD></TR><TR><TD ALIGN="CENTER">Ebany Larios</TD></TR></TABLE>>];
+a201403877 -> a202111718;
+a202111718 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">202111718</TD></TR><TR><TD ALIGN="CENTER">Walter Santizo</TD></TR></TABLE>>];
+a202111718 -> a199901876;
+a199901876 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">199901876</TD></TR><TR><TD ALIGN="CENTER">Giovani Santizo</TD></TR></TABLE>>];
+a199901876 -> a200467898;
+a200467898 [label=<<TABLE border="0"><TR><TD ALIGN="CENTER">200467898</TD></TR><TR><TD ALIGN="CENTER">Sandra Mazariegos</TD></TR></TABLE>>];
+head -> a201709018;
+a200467898->tail;
 }

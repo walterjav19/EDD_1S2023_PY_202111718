@@ -1,38 +1,28 @@
 digraph LinkedList {
 	rankdir=LR;
 	node [shape=box];
-	nullI [shape=none, label="null", style=bold, height=0, width=0];
-	nullF [shape=none, label="null", style=bold, height=0, width=0];
-	a199901876[label="199901876\nGiovani Santizo"]
-	a199901876->a200467898
-	nullI->a199901876[dir=back]
-	a200467898[label="200467898\nSandra Mazariegos"]
-	a200467898->a201403877
-	a200467898->a199901876
-	a201403877[label="201403877\nEbany Larios"]
-	a201403877->a201709018
-	a201403877->a200467898
-	a201709018[label="201709018\nCristian Suy"]
-	a201709018->a201780044
-	a201709018->a201403877
-	a201780044[label="201780044\nLeonardo Martinez"]
-	a201780044->a202111718
-	a201780044->a201709018
-	a202111718[label="202111718\nWalter Santizo"]
-	a202111718->a201780044
-	a202111718->nullF
+	a[label="A"]
+	b[label="B"]
+	c[label="C"]
+	d[label="D"]
+	a->b->c->d;
+	d->c->b->a;
 
-	
-	n0[label="hola"]
-	n0->n1
-	n1[label="hola2"]
-	a199901876->n0
-	{rank=same;a199901876};
+	n1[label="1"]
+	n2[label="2"]
+	n3[label="3"]
+
+	a->n1->n2->n3
+
+	{rank=same;a,n1,n2,n3}
 
 
-	a202111718->n2
-	n2[label="hola"]
-	n2->n3
-	n3[label="hola2"]
-	{ rank=same;a202111718,n2,n3}
+
+	n4[label="4"]
+	n5[label="5"]
+
+	b->n4->n5
+
+	{rank=same;b,n4,n5}
+
 }
