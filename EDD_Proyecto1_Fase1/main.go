@@ -59,10 +59,15 @@ func main() {
 								fmt.Scanln(&desicion)
 								switch desicion {
 								case 1:
-									fmt.Println("Estudiante Aceptado en el Sistema!!!!")
+									
 									a := ColaAlumnos.Dequeu()
 									ColaAlumnos.GenerarDotCola()
-									ListAlumnos.Append(a) //agrego el desencolado a la lista
+									if ListAlumnos.ObtenerCarnet(a.Carnet)==true{
+										fmt.Println("No se puede agregar un Carnet Repetido")
+									}else{
+										ListAlumnos.Append(a) //agrego el desencolado a la lista
+										fmt.Println("Estudiante Aceptado en el Sistema!!!!")
+									}
 									//ordenamos
 									ListAlumnos.Sort()
 									//fecha en el formato que indica
